@@ -1,7 +1,8 @@
 import React from "react";
 import NavBar from "./app/components/NavBar";
-import Product from "./app/components/Product";
 import ProductList from "./app/components/ProductList";
+import ProductDetails from "./app/components/ProductDetails";
+import Cart from "./app/components/Cart";
 
 function App() {
   const productsArray = [
@@ -12,13 +13,9 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <ProductList>
-        {productsArray.map((item, index) => {
-          return (
-            <Product title={item.title} detail={item.details} key={item.id} />
-          );
-        })}
-      </ProductList>
+      <ProductList products={productsArray} />
+      <ProductDetails />
+      <Cart />
     </div>
   );
 }
