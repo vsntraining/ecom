@@ -4,6 +4,8 @@ import ProductList from "./app/components/ProductList";
 
 import ProductDetails from "./app/components/ProductDetails";
 import Cart from "./app/components/Cart";
+import { Swithc, Route, BrowserRouter as Router } from "react-router-dom";
+
 function App() {
 	
 	const productsArray = [
@@ -16,10 +18,26 @@ function App() {
     <div className="App">
 	
     <NavBar />
-	<ProductList products={productsArray}/>
-       
-	  <ProductDetails/>
-	  <Cart/>
+	<Router>
+	<Switch>
+	<Route path="/home">
+			<ProductList products={productsArray}/>
+       </Route>
+	<Route path="/details">
+			<ProductDetails/>
+	  </Route>
+	  
+	  <Route path="/cart">
+			<Cart/>
+	  </Route>
+    <Route>
+		<Cart/>
+	 </Route>
+	 <Route path="/">
+			<ProductList products={productsArray}/>
+	   </Route>
+	  </Switch>
+	  </Router>
     </div>
   );
 }
