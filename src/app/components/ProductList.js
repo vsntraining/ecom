@@ -1,13 +1,12 @@
 import React from "react";
 import Product from "./Product";
 
-const ProductList = ({ products }) => {
-  return (products.map((item, index) => {
-    return <Product 
-              title={item.title}
-              detail={item.details} 
-              key={item.id} />;
-  }))
-};
+const ProductList = ({ products }) => (
+  <div className="flex md:flex-row space-x-4">
+    {products.map((item, index) => {
+      return <Product title={item.title} detail={item.details} key={item.id} />;
+    })}
+  </div>
+);
 
 export default ProductList;
