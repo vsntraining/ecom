@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import NavBar from './app/components/NavBar';
 import ProductList from './app/components/ProductList';
 import ProductDetails from './app/components/ProductDetails';
@@ -7,14 +7,20 @@ import {Switch, Route, BrowserRouter as Router} from 'react-router-dom';
 
 function App() {
   const productsArray = [
-  {title: "Product1", details: "Product details 1", id: "1"},
-  {title: "Product2", details: "Product details 2", id: "2"},
-  {title: "Product3", details: "Product details 3", id: "3"}
+  {title: "Product1", details: "Product details 1", id: "1", inCart: false},
+  {title: "Product2", details: "Product details 2", id: "2", inCart: false},
+  {title: "Product3", details: "Product details 3", id: "3", inCart: false}
 ];
+const [count, setCount] = useState(0);
+
+const updateCount = () => {
+setCount(count+1);
+
+}
 
   return (
     <div className="container mx-auto p-4">
-      <NavBar/>
+      <NavBar inCartCount={count} />
       <Router>
         <Switch>
           <Route path="/home">
@@ -27,7 +33,7 @@ function App() {
             <Cart/>
           </Route>
           <Route path="/">
-            <ProductList products={productsArray} />
+            <ProductList products={productsArray} updateCount={updateCount}/>
           </Route>
         </Switch>
       </Router>
