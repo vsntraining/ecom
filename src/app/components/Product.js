@@ -1,6 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 
-const Product = ({ title, detail }) => {
+const Product = ({ title, detail, inCart, updateCount }) => {
+  const[isInCart, setIsInCart] = useState(inCart);
+    const handleAddToCart = () => {
+      setIsInCart(true);
+      updateCount();
+    }
   return (
     <div>
       <div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4">
@@ -12,6 +17,11 @@ const Product = ({ title, detail }) => {
           <p className="text-gray-500">{detail}</p>
         </div>
       </div>
+      <div>
+        {
+          isInCart ? (<span>In Cart</span>) : (<button onClick={handleAddToCart}>Add to Cart</button>)
+        }
+        </div>
     </div>
   );
 };
