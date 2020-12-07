@@ -3,6 +3,7 @@ import NavBar from './app/components/NavBar';
 import ProductList from './app/components/ProductList';
 import ProductDetails from './app/components/ProductDetails';
 import Cart from './app/components/Cart';
+import {Switch, Route, BrowserRouter as Router} from 'react-router-dom';
 
 function App() {
   const productsArray = [
@@ -11,15 +12,25 @@ function App() {
   {title: "Product3", details: "Product details 3", id: "3"}
 ];
 
-console.log(productsArray);
   return (
-    <div className="App">
+    <div className="container mx-auto p-4">
       <NavBar/>
-      <ProductList>
-        <ProductDetails products={productsArray}/>
-        
-      </ProductList>
-      <Cart/>
+      <Router>
+        <Switch>
+          <Route path="/home">
+            <ProductList products={productsArray} />
+          </Route>
+          <Route path="/details">
+            <ProductDetails />
+          </Route>
+          <Route path="/cart">
+            <Cart/>
+          </Route>
+          <Route path="/">
+            <ProductList products={productsArray} />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
