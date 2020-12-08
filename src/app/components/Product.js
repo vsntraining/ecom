@@ -18,10 +18,10 @@ const Product = ({ title, detail, inCart, updateCount }) => {
         </div>
         <div className="relative -right-7 -bottom-7 text-sm p-3">
         {isInCart ? (
-          <span className=" bg-gray-500 p-1 rounded-full text-white ">In Cart</span>
+          <span className="bg-gray-500 p-1 rounded-full text-white ">In Cart</span>
         ) : (
           <button
-            className=" bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white "
+            className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white "
             onClick={handleAddToCart}
           >
             Add to Cart

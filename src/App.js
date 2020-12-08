@@ -19,7 +19,7 @@ setCount(count+1);
 }
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-1">
       <NavBar inCartCount={count} />
       <Router>
         <Switch>
